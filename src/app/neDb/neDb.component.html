@@ -1,0 +1,16 @@
+<h1>NeDb</h1>
+
+<div *ngIf="this.data && !fetching">
+  <input [(ngModel)]="url" placeholder="Enter url for fetch data">
+  <button (click)="startFetch()">Go</button>
+</div>
+<br/> <br/>
+<div *ngIf="!this.data || fetching" >Loading</div>
+<div *ngIf="this.data && !fetching">
+  <button  (click)="deleteAll()">Delete all</button>
+  <button (click)="find()" >Find where id more then</button>
+  <input [(ngModel)]="number" placeholder="e.g 10"/>
+  <div>Count {{this.data.length}}</div>
+
+
+</div>
