@@ -11,7 +11,7 @@ export class NeDbService {
 
 
   public getData(): Observable<any> {
-    return this.http.get(`http://localhost:3000/get-json`);
+    return this.http.get(`http://localhost:3000/data.json`);
   }
 
 }
