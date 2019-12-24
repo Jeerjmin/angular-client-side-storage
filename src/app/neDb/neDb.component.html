@@ -1,0 +1,18 @@
+<div *ngIf="!this.data" >Loading</div>
+<div *ngIf="this.data">
+  <h1>NeDb</h1>
+  <button (click)="find()" >Find where id more then</button>
+  <input [(ngModel)]="number" placeholder="e.g 10"/>
+  <div>Count {{this.data.length}}</div>
+<!--    <div class="item" *ngFor="let item of data">-->
+<!--      <span>Id</span><p>{{item.id}}</p>-->
+<!--      <span>Name</span><p>{{item.name}}</p>-->
+<!--      <span>Work</span><p>{{item.work}}</p>-->
+<!--      <span>Email</span><p>{{item.email}}</p>-->
+<!--      <span>Dob</span><p>{{item.dob}}</p>-->
+<!--      <span>Address</span><p>{{item.address}}</p>-->
+<!--      <span>City</span><p>{{item.city}}</p>-->
+<!--    </div>-->
+
+
+</div>
