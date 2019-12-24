@@ -31,6 +31,9 @@
             ]
           },
           "configurations": {
+            "es5": {
+              "tsConfig": "./tsconfig.es5.json"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -70,6 +73,9 @@
           "configurations": {
             "production": {
               "browserTarget": "nedb-fornova:build:production"
+            },
+            "es5": {
+              "browserTarget": "nedb-fornova:build:es5"
             }
           }
         },

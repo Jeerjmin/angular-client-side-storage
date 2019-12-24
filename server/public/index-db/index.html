@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>App</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+  <script>
+    const maxArraySize = 100;
+
+    window.onload = async () => {
+      let data = localStorage.getItem('data');
+
+      if (!data) {
+        const result = await axios.get('/data.json');
+        data = result.data;
+      } else {
+        data = JSON.parse(data);
+      }
+
+      // const result = await axios.get('/data.zip');
+      // const zip = await JSZip.loadAsync(result.data);
+      //
+      // const data = (await zip.file('data.json').async('string'));
+      // const data = JSON.parse(await zip.file('data.json').async('string'));
+
+      // console.log('data', data);
+      console.log('data.length', data.length)
+      console.log(data.find(item => item.id > 199997));
+
+      console.log('JSON.stringify(data)', JSON.stringify(data).length)
+      localStorage.setItem('data', JSON.stringify(data));
+    }
+  </script>
+</head>
+<body>
+  <h3>Check out console</h3>
+</body>
+</html>
