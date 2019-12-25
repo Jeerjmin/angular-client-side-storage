@@ -3,7 +3,8 @@ import { NeDbComponent } from './neDb.component';
 import {NeDbService} from './neDb.service';
 import {NeDbRoutingModule} from './neDb-routing.module';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule, MatInputModule, MatPaginatorModule, MatSelectModule, MatTableModule, MatTabsModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,14 @@ import {FormsModule} from '@angular/forms';
   imports: [
     NeDbRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
   ],
   providers: [
     NeDbService

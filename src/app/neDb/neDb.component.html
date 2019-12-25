@@ -8,9 +8,71 @@
 <div *ngIf="!this.data || fetching" >Loading</div>
 <div *ngIf="this.data && !fetching">
   <button  (click)="deleteAll()">Delete all</button>
-  <button (click)="find()" >Find where id more then</button>
-  <input [(ngModel)]="number" placeholder="e.g 10"/>
-  <div>Count {{this.data.length}}</div>
+  <div>Count {{count}}</div>
+  <div>Time Db Load {{timeDbLoad}} ms</div>
+  <div>Time Data Load {{timeDataLoad}} ms</div>
+  <div>Time Data Count {{timeDataCount}} ms</div>
+
+
+<div style="display: flex; max-width: 300px; align-items: center" >
+  <mat-select [(ngModel)]="attribute" style="border:1px solid gray;"  class="container__action-type mat-select" placeholder="Type">
+    <mat-option *ngFor="let item of displayedColumns" [value]="item">
+      {{item}}
+    </mat-option>
+  </mat-select>
+  <input style="border:1px solid gray; margin: 0 20px;" matInput [(ngModel)]="value" placeholder="Value"/>
+  <button style="border:1px solid gray;" mat-button (click)="findAttribute()" >Find</button>
+</div>
+
+
+  <mat-paginator [length]="count"
+                 [pageSize]=10
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="getData($event)"
+                 showFirstLastButtons>
+  </mat-paginator>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="work">
+      <th mat-header-cell *matHeaderCellDef> work </th>
+      <td mat-cell *matCellDef="let element"> {{element.work}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef> dob </th>
+      <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> city </th>
+      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
 
 
 </div>
