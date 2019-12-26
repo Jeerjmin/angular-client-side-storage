@@ -5,7 +5,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const cors = require('cors');
-
+const generateStructure = require('./get-structure');
 const app = express();
 
 app.use(cors());
@@ -17,6 +17,9 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
     res.status(200).json('Hello from server');
 });
+
+router.get('/structure-generate', generateStructure.validator(), generateStructure.controller);
+
 app.use('/', router);
 
 // catch 404 and forward to error handler

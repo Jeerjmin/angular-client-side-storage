@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node server/server",
+    "server": "nodemon server/server",
     "gen-json": "node server/gen-json"
   },
   "private": true,
@@ -31,6 +31,7 @@
     "jszip": "^3.2.2",
     "hammerjs": "^2.0.8",
     "nedb": "^1.8.0",
+    "nodemon": "^2.0.2",
     "path": "^0.12.7",
     "process": "^0.11.10",
     "rxjs": "~6.4.0",
