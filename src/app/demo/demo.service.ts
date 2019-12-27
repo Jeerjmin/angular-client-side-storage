@@ -2,6 +2,14 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import * as Datastore from 'nedb';
 
+export interface SearchInterface {
+  year: number;
+  month: number;
+  compset_id: number;
+  provider_id: number;
+  los: number;
+}
+
 @Injectable()
 export class DemoService {
   public days = Array(35).fill(undefined);
@@ -47,17 +55,9 @@ export class DemoService {
     });
   }
 
-  public async find(
-    compset_id: number = 1,
-    provider_id: number = 2,
-    los: number = 3,
-  ): Promise<any[]> {
+  public async find(params: SearchInterface): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this.db.find({
-        compset_id,
-        provider_id,
-        los,
-      }).skip(0).limit(10).exec((err, data) => {
+      this.db.find(params).skip(0).limit(10).exec((err, data) => {
         if (err) {
           console.error(err);
           reject(err);

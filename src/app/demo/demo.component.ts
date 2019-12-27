@@ -10,7 +10,7 @@ export class DemoComponent implements OnInit {
   public data: any[];
   public days = Array(35).fill(undefined);
 
-  // Filters
+  // Filters data
   public compSetOptions = compSetOptions;
   public sourceOptions = sourceOptions;
   public priceOptions = priceOptions;
@@ -19,7 +19,9 @@ export class DemoComponent implements OnInit {
   public roomTypeOptions = roomTypeOptions;
   public mealTypeOptions = mealTypeOptions;
 
-  // Filter data
+  // Filter
+  public year;
+  public month;
   public compSet;
   public source;
   public price;
@@ -39,7 +41,13 @@ export class DemoComponent implements OnInit {
   }
 
   async search() {
-    this.data = await this.demoService.find(this.compSet, this.source, this.los);
+    this.data = await this.demoService.find({
+      year: this.year,
+      month: this.month,
+      los: this.los,
+      compset_id: this.compSet.id,
+      provider_id: this.source.id,
+    });
   }
 
   getDay() {
