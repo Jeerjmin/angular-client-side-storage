@@ -1,3 +1,41 @@
+<div class="actions">
+  <mat-select [(ngModel)]="compSet" placeholder="Comp.set">
+    <mat-option *ngFor="let item of compSetOptions"  [value]="item.id">
+      {{ item.name }}
+    </mat-option>
+  </mat-select>
+  <mat-select [(ngModel)]="source" placeholder="Source">
+    <mat-option *ngFor="let item of sourceOptions"  [value]="item.id">
+      {{ item.name }}
+    </mat-option>
+  </mat-select>
+  <mat-select [(ngModel)]="price" placeholder="Price">
+    <mat-option *ngFor="let item of priceOptions" [value]="item.id">
+      {{ item.name }}
+    </mat-option>
+  </mat-select>
+  <mat-select [(ngModel)]="pos" placeholder="Pos">
+    <mat-option *ngFor="let item of posOptions" [value]="item.id">
+      {{ item.name }}
+    </mat-option>
+  </mat-select>
+  <mat-select [(ngModel)]="los" placeholder="Los">
+    <mat-option *ngFor="let item of losOptions" [value]="item.id">
+      {{ item.name }}
+    </mat-option>
+  </mat-select>
+  <mat-select [(ngModel)]="roomType" placeholder="Room type">
+    <mat-option *ngFor="let item of roomTypeOptions" [value]="item.id">
+      {{ item.name }}
+    </mat-option>
+  </mat-select>
+  <mat-select [(ngModel)]="mealType" placeholder="Meal Type">
+    <mat-option *ngFor="let item of mealTypeOptions"  [value]="item.id">
+      {{ item.name }}
+    </mat-option>
+  </mat-select>
+  <button (click)="search()" mat-raised-button >Search</button>
+</div>
 
 <div class="calendar">
 
@@ -11,10 +49,10 @@
     <div>Sat</div>
   </div>
 
-  <div class="container">
+  <div *ngIf="data" class="container">
     <div class="cell" *ngFor="let day of days; let i = index">
         <div *ngIf="i >= getDay()">
-          {{data[0].checkin_dates[i-getDay()].day + 1}}
+          {{data[0]?.checkin_dates[i-getDay()]?.day + 1}}
         </div>
     </div>
   </div>
