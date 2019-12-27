@@ -6,7 +6,7 @@ import {DemoService} from './demo.service';
 @Component({
   selector: 'app-root',
   templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.css']
+  styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent {
 

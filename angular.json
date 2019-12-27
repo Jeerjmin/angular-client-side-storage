@@ -127,5 +127,10 @@
       }
     }
   },
-  "defaultProject": "nedb-fornova"
+  "defaultProject": "nedb-fornova",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

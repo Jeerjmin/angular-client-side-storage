@@ -6,7 +6,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 @Component({
   selector: 'app-root',
   templateUrl: './neDb.component.html',
-  styleUrls: ['./neDb.component.css']
+  styleUrls: ['./neDb.component.scss']
 })
 export class NeDbComponent {
 
