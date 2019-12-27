@@ -3,8 +3,6 @@ import {Injectable} from '@angular/core';
 import * as Datastore from 'nedb';
 
 export interface SearchInterface {
-  year: number;
-  month: number;
   compset_id: number;
   provider_id: number;
   los: number;

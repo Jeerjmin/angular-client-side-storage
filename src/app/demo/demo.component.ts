@@ -54,7 +54,11 @@ export class DemoComponent implements OnInit {
   }
 
   async search() {
-    [this.data] = await this.demoService.find(this.compSet, this.source, this.los);
+    [this.data] = await this.demoService.find({
+      compset_id: this.compSet,
+      provider_id: this.source,
+      los: this.los,
+    });
 
     this.data.checkin_dates = this.data.checkin_dates.map((el, i) => {
       const customerRates = find(el.room_types.customer_rates, { room_rate_name_id: this.roomType, meal_plan: this.mealType  });
@@ -70,7 +74,7 @@ export class DemoComponent implements OnInit {
       };
     });
 
-    console.log('lodash data', this.data)
+    console.log('lodash data', this.data);
 
   }
 
