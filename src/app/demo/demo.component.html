@@ -66,9 +66,8 @@
             <div
               class="cell_content_price"
               [ngClass]="{
-              'cell_content_price-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) < 1,
               'cell_content_price-grey' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 1,
-              'cell_content_price-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 10
+              'cell_content_price-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 10 || comparePrices(data?.checkin_dates[i-getDay()]?.room_types) < 1
               }"
             >
               {{data?.checkin_dates[i-getDay()]?.room_types.customer_rates.price}} {{data?.checkin_dates[i-getDay()]?.currency}}
@@ -76,9 +75,8 @@
             <div
               class="cell_content_comp"
               [ngClass]="{
-              'cell_content_comp-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) < 1,
               'cell_content_comp-grey' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 1,
-              'cell_content_comp-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 10
+              'cell_content_comp-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 10 || comparePrices(data?.checkin_dates[i-getDay()]?.room_types) < 1
               }"
             >
               {{comparePrices(data?.checkin_dates[i-getDay()]?.room_types)}}% vs. comp
