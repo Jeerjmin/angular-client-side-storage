@@ -21,7 +21,7 @@ export class DemoComponent implements OnInit {
   public days = Array(35).fill(undefined);
   public fetching = false;
 
-  // Filters
+  // Filters data
   public compSetOptions = compSetOptions;
   public sourceOptions = sourceOptions;
   public priceOptions = priceOptions;
@@ -30,7 +30,9 @@ export class DemoComponent implements OnInit {
   public roomTypeOptions = roomTypeOptions;
   public mealTypeOptions = mealTypeOptions;
 
-  // Filter data
+  // Filter
+  public year;
+  public month;
   public compSet;
   public source;
   public price;
