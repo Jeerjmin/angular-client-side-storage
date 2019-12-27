@@ -11,4 +11,12 @@
     <div>Sat</div>
   </div>
 
+  <div class="container">
+    <div class="cell" *ngFor="let day of days; let i = index">
+        <div *ngIf="i >= getDay()">
+          {{data[0].checkin_dates[i-getDay()].day + 1}}
+        </div>
+    </div>
+  </div>
+
 </div>

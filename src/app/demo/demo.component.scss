@@ -9,6 +9,28 @@
   border: 1px solid black;
   padding: 20px;
 
+  &__header_months {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+
+    div {
+      width: 100%;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cell {
+    flex: 0 0 13.5%;
+
+    height: 120px;
+
+    border: 1px solid black;
+  }
 
 
 }
