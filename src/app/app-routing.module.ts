@@ -5,6 +5,10 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    loadChildren: 'src/app/demo/demo.module#DemoModule'
+  },
+  {
+    path: 'nedb',
     loadChildren: 'src/app/neDb/neDb.module#NeDbModule',
   },
   {
