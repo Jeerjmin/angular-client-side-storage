@@ -8,6 +8,7 @@ import {DemoService} from './demo.service';
 })
 export class DemoComponent implements OnInit {
   public data: any[];
+  public days = Array(35).fill(undefined);
 
   // Filters
   public compSetOptions = compSetOptions;
@@ -37,13 +38,8 @@ export class DemoComponent implements OnInit {
     await this.demoService.initDataFromServer();
   }
 
-  async search(
-    year: number = 2019,
-    compset_id: number = 1,
-    provider_id: number = 2,
-    los: number = 3,
-  ) {
-    this.data = await this.demoService.find(year, compset_id, provider_id, los);
+  async search() {
+    this.data = await this.demoService.find(this.compSet, this.source, this.los);
   }
 
   getDay() {
@@ -76,10 +72,10 @@ const posOptions = [
 ];
 
 const losOptions = [
-  {id: 0, name: '1 Night'},
-  {id: 1, name: '2 Night'},
-  {id: 2, name: '5 Night'},
-  {id: 3, name: '10 Night'},
+  {value: 1, name: '1 Night'},
+  {value: 2, name: '2 Night'},
+  {value: 5, name: '5 Night'},
+  {value: 10, name: '10 Night'},
 ];
 
 const roomTypeOptions = [

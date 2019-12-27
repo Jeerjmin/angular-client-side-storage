@@ -48,14 +48,12 @@ export class DemoService {
   }
 
   public async find(
-    year: number = 2019,
     compset_id: number = 1,
     provider_id: number = 2,
     los: number = 3,
   ): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this.db.find({
-        year,
         compset_id,
         provider_id,
         los,
