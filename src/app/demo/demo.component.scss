@@ -76,11 +76,29 @@
           background: lightgray;
           height: 80px;
 
+          &-green {
+            background: green;
+          }
+          &-yellow {
+            background: yellow;
+          }
+          &-red {
+            background: red;
+          }
+
           &_price {
             text-align: center;
             font-family: Lato, sans-serif;
             font-size: 23px;
             color: white;
+
+            &-white {
+              color: white;
+            }
+
+            &-grey {
+              color:grey;
+            }
           }
 
           &_comp {
@@ -89,9 +107,22 @@
             font-family: Lato, sans-serif;
             font-size: 12px;
             margin-top: 30px;
+
+
+            &-white {
+              color: white;
+            }
+
+            &-grey {
+              color:grey;
+            }
+
+
           }
 
         }
+
+
 
       }
 

@@ -1,4 +1,4 @@
-<div class="actions">
+<div *ngIf="!fetching" class="actions">
   <mat-select [(ngModel)]="compSet" placeholder="Comp.set">
     <mat-option *ngFor="let item of compSetOptions"  [value]="item.id">
       {{ item.name }}
@@ -9,16 +9,16 @@
       {{ item.name }}
     </mat-option>
   </mat-select>
-  <mat-select [(ngModel)]="price" placeholder="Price">
-    <mat-option *ngFor="let item of priceOptions" [value]="item.id">
-      {{ item.name }}
-    </mat-option>
-  </mat-select>
-  <mat-select [(ngModel)]="pos" placeholder="Pos">
-    <mat-option *ngFor="let item of posOptions" [value]="item.id">
-      {{ item.name }}
-    </mat-option>
-  </mat-select>
+<!--  <mat-select [(ngModel)]="price" placeholder="Price">-->
+<!--    <mat-option *ngFor="let item of priceOptions" [value]="item.id">-->
+<!--      {{ item.name }}-->
+<!--    </mat-option>-->
+<!--  </mat-select>-->
+<!--  <mat-select [(ngModel)]="pos" placeholder="Pos">-->
+<!--    <mat-option *ngFor="let item of posOptions" [value]="item.id">-->
+<!--      {{ item.name }}-->
+<!--    </mat-option>-->
+<!--  </mat-select>-->
   <mat-select [(ngModel)]="los" placeholder="Los">
     <mat-option *ngFor="let item of losOptions" [value]="item.value">
       {{ item.name }}
@@ -30,7 +30,7 @@
     </mat-option>
   </mat-select>
   <mat-select [(ngModel)]="mealType" placeholder="Meal Type">
-    <mat-option *ngFor="let item of mealTypeOptions"  [value]="item.id">
+    <mat-option *ngFor="let item of mealTypeOptions"  [value]="item.value">
       {{ item.name }}
     </mat-option>
   </mat-select>
@@ -51,14 +51,41 @@
 
   <div  class="container">
     <div class="container__item" *ngFor="let day of days; let i = index">
-        <div  class="cell" *ngIf="data && data[0] && i >= getDay()">
+        <div  class="cell" *ngIf="data && i >= getDay()">
           <div class="cell_header">
-            <div class="cell_header_day">{{data[0]?.checkin_dates[i-getDay()]?.day + 1}}</div>
-            <div  class="cell_header_pos">UK</div>
+            <div class="cell_header_day">{{data?.checkin_dates[i-getDay()]?.day + 1}}</div>
+<!--            <div  class="cell_header_pos">UK</div>-->
           </div>
-          <div class="cell_content">
-            <div class="cell_content_price">$260</div>
-            <div class="cell_content_comp"> +12$ vs. comp </div>
+          <div *ngIf="data?.checkin_dates[i-getDay()]?.room_types.customer_rates"
+               class="cell_content"
+               [ngClass]="{
+              'cell_content-green' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) < 1,
+              'cell_content-yellow' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 1,
+              'cell_content-red' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 10
+              }" >
+            <div
+              class="cell_content_price"
+              [ngClass]="{
+              'cell_content_price-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) < 1,
+              'cell_content_price-grey' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 1,
+              'cell_content_price-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 10
+              }"
+            >
+              {{data?.checkin_dates[i-getDay()]?.room_types.customer_rates.price}} {{data?.checkin_dates[i-getDay()]?.currency}}
+            </div>
+            <div
+              class="cell_content_comp"
+              [ngClass]="{
+              'cell_content_comp-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) < 1,
+              'cell_content_comp-grey' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 1,
+              'cell_content_comp-white' : comparePrices(data?.checkin_dates[i-getDay()]?.room_types) > 10
+              }"
+            >
+              {{comparePrices(data?.checkin_dates[i-getDay()]?.room_types)}}% vs. comp
+            </div>
+          </div>
+          <div *ngIf="!data?.checkin_dates[i-getDay()]?.room_types.customer_rates" class="cell_content">
+            <div class="cell_content_price">NONE</div>
           </div>
         </div>
     </div>
