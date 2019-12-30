@@ -4,7 +4,7 @@ import {NeDbService} from './neDb.service';
 import {NeDbRoutingModule} from './neDb-routing.module';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatInputModule, MatPaginatorModule, MatSelectModule, MatTableModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatPaginatorModule, MatSelectModule, MatTableModule, MatTabsModule, MatTooltipModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -15,6 +15,7 @@ import {MatButtonModule, MatInputModule, MatPaginatorModule, MatSelectModule, Ma
     CommonModule,
     FormsModule,
     MatTabsModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,

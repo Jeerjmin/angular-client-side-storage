@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatInputModule, MatPaginatorModule, MatSelectModule, MatTableModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatPaginatorModule, MatSelectModule, MatTableModule, MatTabsModule, MatTooltipModule} from '@angular/material';
 import {DemoComponent} from './demo.component';
 import {DemoRoutingModule} from './demo-routing.module';
 import {DemoService} from './demo.service';
@@ -18,6 +18,7 @@ import {DemoService} from './demo.service';
     MatTabsModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatTooltipModule,
     MatPaginatorModule,
     MatInputModule,
     MatSelectModule,

@@ -20,6 +20,7 @@ export class DemoComponent implements OnInit {
   public data: IData;
   public days = Array(35).fill(undefined);
   public fetching = false;
+  public dbCount: number;
 
   // Filters data
   public compSetOptions = compSetOptions;
@@ -49,7 +50,7 @@ export class DemoComponent implements OnInit {
 
   async ngOnInit() {
     this.fetching = true;
-    await this.demoService.initDataFromServer();
+    this.dbCount = await this.demoService.initDB();
     this.fetching = false;
   }
 
@@ -75,7 +76,21 @@ export class DemoComponent implements OnInit {
     });
 
     console.log('lodash data', this.data);
+  }
 
+  async detailed(data) {
+    if (!data.room_types.competitors_rates) {
+      return;
+    }
+
+    alert(`DAY ${data.day}
+      \nCompetitor
+      Room type: ${data.room_types.competitors_rates.room_rate_name_id}
+      Price: ${data.room_types.competitors_rates.price}
+      Pos: ${data.room_types.pos}
+      Meal: ${data.room_types.competitors_rates.meal_plan}
+      Free cancelation: ${data.room_types.competitors_rates.free_cancelation}
+    `);
   }
 
   comparePrices(roomTypes) {

@@ -38,7 +38,6 @@
 </div>
 
 <div class="calendar">
-
   <div class="calendar__header_months">
     <div><span>Sun</span></div>
     <div><span>Mon</span></div>
@@ -51,7 +50,7 @@
 
   <div  class="container">
     <div class="container__item" *ngFor="let day of days; let i = index">
-        <div  class="cell" *ngIf="data && i >= getDay()">
+        <div class="cell" *ngIf="data && i >= getDay()" (click)="detailed(data?.checkin_dates[i-getDay()])">
           <div class="cell_header">
             <div class="cell_header_day">{{data?.checkin_dates[i-getDay()]?.day + 1}}</div>
 <!--            <div  class="cell_header_pos">UK</div>-->
